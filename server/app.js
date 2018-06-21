@@ -1,6 +1,6 @@
 const path = require('path');
 const express = require('express');
-const db = require('../database/db.js');
+const db = require('../database/postgresdb.js');
 
 const app = express();
 

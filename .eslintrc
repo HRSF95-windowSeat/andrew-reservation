@@ -10,9 +10,20 @@
         "node": true,
         "es6": true
     },
+    "ecmaFeatures": {
+        "arrowFunctions": true
+    },
     "rules": {
         "react/prop-types": [
             2
+        ],
+        "arrow-body-style": [
+            2,
+            "as-needed"
+        ],
+        "no-loop-func": "off",
+        "prefer-template": [
+            "warn"
         ],
         "react/forbid-prop-types": [
             1,

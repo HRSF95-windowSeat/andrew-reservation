@@ -48,7 +48,7 @@ const writeData = () => {
   while (generations < 10) {
     const generateData = () => {
       let dataSeed = '';
-      for (let i = 0; i < 10; i += 1) {
+      for (let i = 0; i < 1000000; i += 1) {
         dataSeed += generateRandomData();
       }
       return dataSeed;

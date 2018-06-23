@@ -1,12 +1,12 @@
 \c sdc_reservations;
 
 CREATE TABLE IF NOT EXISTS reservations_sql ( 
-	id INT AUTO_INCREMENT,
+	id serial,
 	party_size INT NOT NULL,
-	date DATE,
+	date VARCHAR(255) NOT NULL,
   party_size_max INT NOT NULL,
 	time VARCHAR(255) NOT NULL,
 	PRIMARY KEY(id)
 );
 
-COPY reservations_sql from fakedata.txt (DELIMITER ('|'));
+\copy reservations_sql (party_size, date, party_size_max, time) from './fakedata.txt' (DELIMITER ('|'))

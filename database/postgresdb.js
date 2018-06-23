@@ -11,7 +11,7 @@ const client = new pg.Client(connection);
 client.connect();
 
 const grabTimeSlots = (id, date, cb) => {
-  const q = `SELECT * FROM bookings WHERE (restaurant_id = ${id} && date = ${JSON.stringify(date)});`;
+  const q = `SELECT * FROM reservations_sdc WHERE (id = ${id});`;
   client.query(q, (error, results) => {
     if (error) {
       throw error;

@@ -1,6 +1,8 @@
 const fs = require('fs');
 const faker = require('faker');
 
+let counter = 0;
+
 const generateRandomData = () => {
   const start = new Date();
 
@@ -37,7 +39,7 @@ const generateRandomData = () => {
   };
   const randomTimes = randomTimeTiles(times, randomLength);
 
-  const seedString = `${randomPartySize}|'${randomDate}'|${randomMaxSize}|'${randomTimes}'\n`;
+  const seedString = `${counter}|${randomPartySize}|${randomDate}|${randomMaxSize}|${randomTimes}\n`;
   return seedString;
 };
 
@@ -49,13 +51,14 @@ const writeData = () => {
     const generateData = () => {
       let dataSeed = '';
       for (let i = 0; i < 1000000; i += 1) {
+        counter += 1;
         dataSeed += generateRandomData();
       }
       return dataSeed;
     };
 
     try {
-      fs.appendFileSync('./fakedata.txt', generateData());
+      fs.appendFileSync('./noSQLData.txt', generateData());
       generations += 1;
       console.log(`\nData Generation ${generations} complete.\n`);
     } catch (err) {

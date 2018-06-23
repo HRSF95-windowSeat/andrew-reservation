@@ -6,3 +6,5 @@ database/injector.js
 database/config.js
 reservationsN1.0.zip
 fakedata.txt
+noSQLData.txt
+.DS_Store

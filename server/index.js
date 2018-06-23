@@ -10,3 +10,5 @@ app.listen(port, () => {
 couch.listDatabases().then((dbs) => {
   console.log(dbs);
 });
+
+// curl -X POST http://***.***.***.***:5984/database/ -d @sample.json -H “Content-Type:application/json”

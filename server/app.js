@@ -1,7 +1,6 @@
 const express = require('express');
 const path = require('path');
 // const postgresdb = require('../database/postgresdb');
-// const couchdb = require('../database/couchdb');
 
 const app = express();
 

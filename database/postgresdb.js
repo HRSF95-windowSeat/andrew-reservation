@@ -11,7 +11,7 @@ const client = new pg.Client(connection);
 client.connect();
 
 const grabTimeSlots = (id, date, cb) => {
-  const q = `SELECT * FROM reservations_sdc WHERE (id = ${id});`;
+  const q = `SELECT * FROM reservations_sql WHERE (id = ${id});`;
   client.query(q, (error, results) => {
     if (error) {
       throw error;
@@ -20,8 +20,8 @@ const grabTimeSlots = (id, date, cb) => {
   });
 };
 
-const postTimeSlot = (id, date, time, cb) => {
-  const q = 'INSERT INTO bookings (id, date, time) VALUES (?, ?, ?)';
+const postTimeSlot = (id, partySize, date, partySizeMax, time, cb) => {
+  const q = 'INSERT INTO reservations_sql (id, party_size, date, party_size_max, time) VALUES (?, ?, ?)';
   client.query(q, (error, results) => {
     if (error) {
       throw error;

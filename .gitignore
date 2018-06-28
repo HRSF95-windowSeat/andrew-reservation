@@ -8,3 +8,7 @@ reservationsN1.0.zip
 fakedata.txt
 noSQLData.csv
 .DS_Store
+artillery.yml
+newrelic.js
+newrelic_agent.log
+dump.rdb 

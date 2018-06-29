@@ -30,7 +30,7 @@ const queryGetFromDb = (req, res) => {
     if (error) {
       res.sendStatus(500).send(error);
     } else {
-      client.setex(req.params.restaurant_id, 5000, JSON.stringify(data.rows[0]));
+      client.setex(req.params.restaurant_id, 3600, JSON.stringify(data.rows[0]));
       res.status(200).send(data.rows[0]);
     }
   });

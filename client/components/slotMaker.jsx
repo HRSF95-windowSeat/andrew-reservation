@@ -18,7 +18,6 @@ class SlotMaker extends React.Component {
   render() {
     const timeAvail = [];
     let timeObjArray = this.props.timeSlots;
-    console.log(timeObjArray);
     let idxOfPick = time.findIndex(pick => pick === this.props.time);
     let timeSelected = idxOfPick - 1;
     if (this.props.timeSlots.length !== 0 && this.props.timeSlots[0].party_size_max <= this.props.currPartySize) {
@@ -38,7 +37,6 @@ class SlotMaker extends React.Component {
       let notAvail = timeObjArray.map((dataObj) => {
         return dataObj;
       });
-      console.log(notAvail);
       if (!notAvail.includes(time[idxOfPick]) && time[idxOfPick] !== undefined) {
         timeAvail.push(time[idxOfPick]);
       }

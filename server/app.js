@@ -8,8 +8,8 @@ const client = redis.createClient();
 
 const app = express();
 
-// app.use('/', express.static(path.join(__dirname, '../public')));
-app.use('/restaurant/:restaurant_id', express.static(path.join(__dirname, '../public')));
+app.use('/', express.static(path.join(__dirname, '../public')));
+// app.use('/restaurant/:restaurant_id', express.static(path.join(__dirname, '../public')));
 
 const cache = (req, res, next) => {
   const id = req.params.restaurant_id;

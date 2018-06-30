@@ -11,4 +11,5 @@ noSQLData.csv
 artillery.yml
 newrelic.js
 newrelic_agent.log
-dump.rdb 
+dump.rdb
+.nyc_output 

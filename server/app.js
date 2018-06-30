@@ -8,6 +8,10 @@ const client = redis.createClient();
 
 const app = express();
 
+// app.use('/', (req, res, next) => {
+//   console.log(req.url);
+//   next();
+// })
 app.use('/', express.static(path.join(__dirname, '../public')));
 // app.use('/restaurant/:restaurant_id', express.static(path.join(__dirname, '../public')));
 
@@ -38,8 +42,14 @@ const queryGetFromDb = (req, res) => {
 
 app.get('/restaurant/:restaurant_id/:date', cache, queryGetFromDb);
 
-app.post('/restaurant/:restaurant_id/:date', (req, res) => {
-  res.end();
+app.post('/restaurant/:restaurant_id/:date/:party_size/:max_party_size/:times', (req, res) => {
+  postgresdb.postTimeSlots(req.params.restaurant_id, req.params.party_size, req.params.date, req.params.max_party_size, req.params.times, (error, data) => {
+    if (error) {
+      res.send(500).send(error);
+    } else {
+      res.status(201).send('Successfully created your restaurant:', data);
+    }
+  });
 });
 
 // app.put('/restaurant/:restaurant_id/:date', (req, res) => {
@@ -52,9 +62,12 @@ app.post('/restaurant/:restaurant_id/:date', (req, res) => {
 
 const port = process.env.PORT || 3001;
 
+// app.listen(3001, () => {
+//   console.log('Listening on port 3001');
+// });
+
 if (!module.parent) {
   app.listen(port);
   console.log('Listening to port 3001');
 }
-
 module.exports = app;

@@ -1,0 +1,14 @@
+node_modules
+.circleci
+.nyc_output
+test
+.eslintrc
+artillery.yml
+dataGenerator.js
+server/dataServer.js
+dump.rdb
+fakedata.txt
+newrelic_agent.log
+newrelic.js
+noSQLData.csv
+schema.sql 

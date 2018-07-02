@@ -6,7 +6,7 @@ const db = require('../database/postgresdb');
 
 chai.use(chaiHTTP);
 
-describe('GET request endpoint testing', () => {
+describe('Endpoint testing', () => {
   let server;
   before(() => {
     server = require('../server/app');
@@ -16,7 +16,7 @@ describe('GET request endpoint testing', () => {
     process.exit();
   });
 
-  it('Should return a 200 status code', (done) => {
+  it('GET should return a 200 status code', (done) => {
     chai.request(server)
       .get('/')
       .end((error, response) => {
@@ -25,11 +25,20 @@ describe('GET request endpoint testing', () => {
       });
   });
 
-  it('Should return a type string', (done) => {
+  it('GET should return a type string', (done) => {
     chai.request(server)
       .get('/restaurant/1/2018-06-30')
       .end((error, response) => {
         expect(response.body.time).to.be.a('string');
+        done();
+      });
+  });
+
+  it('PUT should return a 202 status code', (done) => {
+    chai.request(server)
+      .put('/restaurant/3/8:30 PM')
+      .end((error, response) => {
+        expect(response).to.have.status(202);
         done();
       });
   });

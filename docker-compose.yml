@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+  reservations:
+    build: .
+    depends_on:
+      - 'database'
+      - 'redis'
+    ports: 
+      - '8005:3001'
+    environment:
+      - REDIS_HOST=redis
+      - POSTGRES_HOST=database
+      - POSTGRES_DB=sdc_reservations
+      - POSTGRES_USER=postgres
+
+  database:
+    restart: always
+    image: postgres:latest
+    ports:
+      - '5432:5432'
+
+  redis:
+    image: redis:latest

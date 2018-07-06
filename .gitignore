@@ -13,3 +13,4 @@ newrelic.js
 newrelic_agent.log
 dump.rdb
 .nyc_output 
+my-ec2-key-pair.pem

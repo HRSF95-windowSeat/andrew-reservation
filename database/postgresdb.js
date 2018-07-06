@@ -1,14 +1,14 @@
 const pg = require('pg');
 
 const connection = ({
-  host: 'localhost',
-  user: 'vincentcastelli',
-  database: 'sdc_reservations',
-  port: 5432,
+  host: process.env.POSTGRES_HOST || 'localhost',
+  user: process.env.POSTGRES_USER || 'vincentcastelli',
+  database: process.env.POSTGRES_DB || 'sdc_reservations',
+  port: process.env.POSTGRES_PORT || 5432,
 });
 
 const client = new pg.Client(connection);
-client.connect();
+client.connect().then(() => { console.log('DB connected'); }).catch((err) => { console.log(err, 'This is error connection'); });
 
 const grabTimeSlots = (id, date, cb) => {
   const q = `SELECT * FROM reservations_sql WHERE (id = ${id});`;

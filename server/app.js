@@ -4,12 +4,14 @@ const path = require('path');
 const redis = require('redis');
 const postgresdb = require('../database/postgresdb');
 
-const client = redis.createClient();
+const redisHOST = '54.219.184.193';
+const redisPORT = 6379;
+const client = redis.createClient(redisPORT, redisHOST);
 
 const app = express();
 
-app.use('/', express.static(path.join(__dirname, '../public')));
-// app.use('/restaurant/:restaurant_id', express.static(path.join(__dirname, '../public')));
+// app.use('/', express.static(path.join(__dirname, '../public')));
+app.use('/restaurant/:restaurant_id', express.static(path.join(__dirname, '../public')));
 
 const cache = (req, res, next) => {
   const id = req.params.restaurant_id;

@@ -1,0 +1,12 @@
+node_modules
+.circleci
+.nyc_output
+test
+.eslintrc
+artillery.yml
+dataGenerator.js
+server/dataServer.js
+dump.rdb
+fakedata.txt
+noSQLData.csv
+schema.sql 

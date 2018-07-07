@@ -10,7 +10,8 @@
   "scripts": {
     "test": "nyc mocha",
     "react-dev": "webpack -d --watch",
-    "start": "nodemon server/app.js"
+    "start-dev": "nodemon server/app.js",
+    "start": "node server/app.js | webpack -d --watch"
   },
   "dependencies": {
     "axios": "^0.18.0",
@@ -18,7 +19,6 @@
     "chai-http": "^4.0.0",
     "express": "^4.16.3",
     "faker": "^4.1.0",
-    "mocha": "^5.2.0",
     "mysql": "^2.15.0",
     "newrelic": "^4.2.0",
     "nodemon": "^1.17.5",
